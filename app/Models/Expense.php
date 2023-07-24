@@ -9,4 +9,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Expense extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'description',
+        'type',
+        'amount',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

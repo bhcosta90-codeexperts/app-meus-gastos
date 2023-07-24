@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('description')->nullable();
             $table->string('slug');
+            $table->unsignedBigInteger('price');
             $table->string('reference');
 
             $table->timestamps();
