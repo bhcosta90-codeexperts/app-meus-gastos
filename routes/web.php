@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Expense;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,15 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::prefix('expenses')->name('expenses.')->prefix('expenses/')->group(function(){
+        Route::get('create', Expense\Create::class)->name('create');
+    });
 });
