@@ -5,6 +5,8 @@ use Laravel\Jetstream\Features;
 use Laravel\Jetstream\Http\Livewire\DeleteUserForm;
 use Livewire\Livewire;
 
+use function Pest\Laravel\assertDatabaseMissing;
+
 test('user accounts can be deleted', function () {
     $this->actingAs($user = User::factory()->create());
 
@@ -12,7 +14,12 @@ test('user accounts can be deleted', function () {
         ->set('password', 'password')
         ->call('deleteUser');
 
-    expect($user->fresh())->toBeNull();
+    $user->fresh();
+
+    assertDatabaseMissing('users', [
+        'id' => $user->id,
+        'deleted_at' => null
+    ]);
 })->skip(function () {
     return ! Features::hasAccountDeletionFeatures();
 }, 'Account deletion is not enabled.');
