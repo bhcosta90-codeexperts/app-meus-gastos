@@ -22,4 +22,10 @@ class Index extends Component
 
         return view('livewire.plan.index', compact('plans'));
     }
+
+    public function remove(Plan $plan)
+    {
+        $plan->delete();
+        session()->flash('message', 'Registro removido com sucesso');
+    }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Expense;
 use App\Http\Livewire\Plan;
+use App\Http\Livewire\Payment;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -31,6 +32,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('/subscription', Payment\CreditCard::class)->name('dashboard');
 
 Route::middleware([
     'auth:sanctum',
@@ -60,9 +62,5 @@ Route::middleware([
     Route::prefix('plans')->name('plans.')->prefix('plans/')->group(function () {
         Route::get('/', Plan\Index::class)->name('index');
         Route::get('/create', Plan\Create::class)->name('create');
-
-        Route::prefix('{plan}')->group(function () {
-            // Route::get('/edit', Plan\Edit::class)->name('edit');
-        });
     });
 });
