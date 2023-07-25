@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Plan;
 
 use App\Models\Plan;
+use App\Services\PagSeguro\Plan as ServicePlan;
 use Livewire\Component;
 
 class Create extends Component
@@ -30,8 +31,10 @@ class Create extends Component
     {
         $plan = $this->validate()['plan'];
 
+        $planPagSeguro = ServicePlan\CreatePlan::makeRequest($plan);
+
         Plan::create($plan + [
-            'reference' => 'PAGSEGURO-REFERENCE',
+            'reference' => $planPagSeguro,
         ]);
 
         session()->flash('message', 'Registro criado com sucesso');
