@@ -11,7 +11,7 @@ class CreatePlan
     {
         $url = Credentials::getCredentials('/pre-approvals/request/');
 
-        $response = Http::timeout(10)->withHeaders([
+        $response = Http::timeout(3)->withHeaders([
             'Accept' => 'application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1',
             'Content-Type' => 'application/json'
         ])->post(
@@ -22,7 +22,7 @@ class CreatePlan
                     'name' => $data['name'],
                     'charge' => 'AUTO',
                     'period' => 'MONTHLY',
-                    'amountPerPayment' => 3999
+                    'amountPerPayment' => number_format($data['price'], 2),
                 ]
             ]
         );
