@@ -4,14 +4,14 @@
 
     <div class="flex flex-wrap mb-6 -mx-3">
 
-        <h2 class="w-full px-3 pb-4 mb-6 border-b-2 border-cool-gray-800">
+        <h2 class="w-full px-3 pb-4 mb-2 border-b-2 border-cool-gray-800">
            Realizar Pagamento Assinatura
         </h2>
     </div>
 
-    <form action="" name="creditCard" class="w-full mx-auto max-w-7xl">
+    <form action="" name="creditCard" class="w-full max-w-4xl mx-auto">
 
-        <div class="flex flex-wrap mb-6 -mx-3">
+        <div class="flex flex-wrap -mx-3">
 
             <p class="w-full px-3 mb-6">
                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase">Número Cartão</label>
