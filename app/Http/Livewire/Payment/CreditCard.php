@@ -24,7 +24,6 @@ class CreditCard extends Component
         $response = Http::timeout(10)->post($url, []);
         $responseXml = simplexml_load_string($response->body());
         $this->sessionId = (string) $responseXml->id;
-        $this->plan = Plan::first();
     }
 
     public function processSubscription($payload) {

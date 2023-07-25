@@ -32,7 +32,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     
-    Route::get('/subscription', Payment\CreditCard::class)->name('dashboard');
+    Route::get('/subscription/{plan:slug}', Payment\CreditCard::class)->name('plans.subscription');
 });
 
 
