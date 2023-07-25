@@ -17,10 +17,13 @@
                         Descrição
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Data do registro
+                        Referência
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Valor
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Criado em
                     </th>
                     <th scope="col" class="w-0 px-6 py-3 text-right">
                         Ações
@@ -34,10 +37,13 @@
                             {{$plan->description}}
                         </th>
                         <td class="px-6 py-4">
-                            {{$plan->created_at->format('d/m/Y')}}
+                            {{$plan->reference}}
                         </td>
                         <td class="w-0 px-6 py-4">
                             {{number_format($plan->price, 2, ',', '.')}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$plan->created_at->format('d/m/Y H:i')}}
                         </td>
                         <td class='px-6 py-4'>
                             <div class="inline-flex rounded-md shadow-sm" role="group">

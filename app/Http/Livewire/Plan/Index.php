@@ -15,6 +15,7 @@ class Index extends Component
                 'name',
                 'description',
                 'price',
+                'reference',
                 'slug',
                 'created_at',
             ]);
