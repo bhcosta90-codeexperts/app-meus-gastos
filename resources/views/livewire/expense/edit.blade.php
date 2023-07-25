@@ -16,7 +16,7 @@
 
         <div class='mb-2'>
             <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Valor</label>
-            <input wire:model="amount" type="text" id="amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input wire:model="amount" type="number" step='0.01' id="amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             @error('amount')
                 <h3 class="mt-1 text-red-600 dark:text-red-400">{{$message}}</h3>
             @enderror
