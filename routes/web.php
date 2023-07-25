@@ -35,6 +35,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::prefix('expenses')->name('expenses.')->prefix('expenses/')->group(function(){
-        Route::get('create', Expense\Create::class)->name('create');
+        Route::get('/', Expense\Index::class)->name('index');
+        Route::get('/create', Expense\Create::class)->name('create');
+        Route::get('/edit/{expense}', Expense\Edit::class)->name('edit');
     });
 });

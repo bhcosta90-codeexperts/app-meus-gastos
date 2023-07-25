@@ -5,8 +5,9 @@ namespace App\Http\Livewire\Expense;
 use App\Models\Expense;
 use Livewire\Component;
 
-class Create extends Component
+class Edit extends Component
 {
+    public Expense $expense;
     public $description;
     public $type;
     public $amount;
@@ -17,9 +18,16 @@ class Create extends Component
         'description' => ['required', 'min:3', 'max:150'],
     ];
 
+    public function mount()
+    {
+        $this->description = $this->expense->description;
+        $this->type = $this->expense->type;
+        $this->amount = $this->expense->amount;
+    }
+
     public function render()
     {
-        return view('livewire.expense.create');
+        return view('livewire.expense.edit');
     }
 
     public function save()
@@ -27,15 +35,13 @@ class Create extends Component
 
         $this->validate();
 
-        auth()->user()->expenses()->create([
+        $this->expense->update([
             'type' => $this->type,
             'description' => $this->description,
             'amount' => $this->amount,
             'user_id' => 1,
         ]);
 
-        session()->flash('message', 'Registro criado com sucesso');
-
-        $this->amount = $this->description = $this->type = null;
+        session()->flash('message', 'Registro alterado com sucesso');
     }
 }
