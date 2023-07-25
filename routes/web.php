@@ -3,6 +3,7 @@
 use App\Http\Livewire\Expense;
 use App\Http\Livewire\Plan;
 use App\Http\Livewire\Payment;
+use App\Services\PagSeguro\Subscription\SubscriptionReaderService;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -30,9 +31,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
+    Route::get('/subscription', Payment\CreditCard::class)->name('dashboard');
 });
 
-Route::get('/subscription', Payment\CreditCard::class)->name('dashboard');
+
 
 Route::middleware([
     'auth:sanctum',

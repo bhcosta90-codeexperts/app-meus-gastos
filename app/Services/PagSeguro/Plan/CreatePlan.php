@@ -11,7 +11,7 @@ class CreatePlan
     {
         $url = Credentials::getCredentials('/pre-approvals/request/');
 
-        $response = Http::timeout(3)->withHeaders([
+        $response = Http::timeout(10)->withHeaders([
             'Accept' => 'application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1',
             'Content-Type' => 'application/json'
         ])->post(

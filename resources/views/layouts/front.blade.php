@@ -9,8 +9,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Styles -->
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        @vite(['resources/css/app.css'])
 
         <style>
             body {
@@ -25,7 +26,9 @@
     </head>
     <body class="antialiased">
         <div class="relative flex justify-center min-h-screen bg-gray-100 items-top dark:bg-gray-900 sm:items-center sm:pt-0">
+
             {{$slot}}
+
             @livewireScripts
         </div>
     </body>
