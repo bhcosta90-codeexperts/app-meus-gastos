@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('user_id')->on('users');
             $table->foreignId('plan_id')->on('plans');
             $table->string('reference_transaction');
+            $table->string('date_subscription');
+            $table->string('status');
 
             $table->timestamps();
         });

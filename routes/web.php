@@ -2,6 +2,8 @@
 
 use App\Http\Livewire\Expense;
 use App\Http\Livewire\Plan;
+use App\Http\Livewire\Payment;
+use App\Services\PagSeguro\Subscription\SubscriptionReaderService;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +31,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
+    Route::get('/subscription/{plan:slug}', Payment\CreditCard::class)->name('plans.subscription');
 });
+
 
 
 Route::middleware([
@@ -60,9 +65,5 @@ Route::middleware([
     Route::prefix('plans')->name('plans.')->prefix('plans/')->group(function () {
         Route::get('/', Plan\Index::class)->name('index');
         Route::get('/create', Plan\Create::class)->name('create');
-
-        Route::prefix('{plan}')->group(function () {
-            // Route::get('/edit', Plan\Edit::class)->name('edit');
-        });
     });
 });
