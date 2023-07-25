@@ -5,7 +5,7 @@
     <div class="flex flex-wrap mb-6 -mx-3">
 
         <h2 class="w-full px-3 pb-4 mb-2 border-b-2 border-cool-gray-800">
-            Realizar Pagamento Assinatura
+            Realizar Pagamento Assinatura - Plano Escolhido {{$plan->name}}
         </h2>
     </div>
 
