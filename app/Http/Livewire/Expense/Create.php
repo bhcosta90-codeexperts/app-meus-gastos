@@ -33,9 +33,8 @@ class Create extends Component
     public function save()
     {
 
-        $this->validate();
-
         try {
+            $this->validate();
 
             if ($this->photo) {
                 $photo = $this->photo->store('expenses-photos');

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Livewire\Expense;
-use App\Models\Expense as ModelsExpense;
+use App\Http\Livewire\Plan;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -37,11 +37,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::prefix('expenses')->name('expenses.')->prefix('expenses/')->group(function(){
+    Route::prefix('expenses')->name('expenses.')->prefix('expenses/')->group(function () {
         Route::get('/', Expense\Index::class)->name('index');
         Route::get('/create', Expense\Create::class)->name('create');
 
-        Route::prefix('{expense}')->group(function(){
+        Route::prefix('{expense}')->group(function () {
             Route::get('/edit', Expense\Edit::class)->name('edit');
             Route::get('/photo', function ($expense) {
                 $expense = auth()->user()->expenses()->findOrFail($expense);
@@ -54,6 +54,15 @@ Route::middleware([
                 $image = Storage::get($expense->photo);
                 return response($image)->header('Content-Type', $typeImage);
             })->name('photo');
+        });
+    });
+
+    Route::prefix('plans')->name('plans.')->prefix('plans/')->group(function () {
+        Route::get('/', Plan\Index::class)->name('index');
+        Route::get('/create', Plan\Create::class)->name('create');
+
+        Route::prefix('{plan}')->group(function () {
+            // Route::get('/edit', Plan\Edit::class)->name('edit');
         });
     });
 });

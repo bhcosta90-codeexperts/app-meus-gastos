@@ -19,6 +19,9 @@
                     <x-nav-link href="{{ route('expenses.index') }}" :active="request()->is('expenses*')">
                         {{ __('Meus gastos') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('plans.index') }}" :active="request()->is('plans*')">
+                        {{ __('Planos') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -149,6 +152,10 @@
 
             <x-responsive-nav-link href="{{ route('expenses.index') }}" :active="request()->is('expenses*')">
                 {{ __('Meus gastos') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('plans.index') }}" :active="request()->is('plans*')">
+                {{ __('Planos') }}
             </x-responsive-nav-link>
         </div>
 
