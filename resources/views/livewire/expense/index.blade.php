@@ -34,7 +34,7 @@
                             {{$expense->description}}
                         </th>
                         <td class="px-6 py-4">
-                            {{$expense->created_at->format('d/m/Y H:i:s')}}
+                            {{$expense->expense_at->format('d/m/Y')}}
                         </td>
                         <td class="w-0 px-6 py-4">
                             <span class="{{ $expense->type == 1 ? "text-green-600" : "text-red-600" }}">

@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Livewire\Expense;
+use App\Models\Expense as ModelsExpense;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +40,20 @@ Route::middleware([
     Route::prefix('expenses')->name('expenses.')->prefix('expenses/')->group(function(){
         Route::get('/', Expense\Index::class)->name('index');
         Route::get('/create', Expense\Create::class)->name('create');
-        Route::get('/edit/{expense}', Expense\Edit::class)->name('edit');
+
+        Route::prefix('{expense}')->group(function(){
+            Route::get('/edit', Expense\Edit::class)->name('edit');
+            Route::get('/photo', function ($expense) {
+                $expense = auth()->user()->expenses()->findOrFail($expense);
+
+                if (empty($expense->photo) || !Storage::exists($expense->photo)) {
+                    return abort(Response::HTTP_NOT_FOUND, 'Image not found');
+                }
+
+                $typeImage = Storage::mimeType($expense->photo);
+                $image = Storage::get($expense->photo);
+                return response($image)->header('Content-Type', $typeImage);
+            })->name('photo');
+        });
     });
 });
