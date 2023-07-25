@@ -10,8 +10,8 @@ class Index extends Component
     public function render()
     {
         $expenses = auth()->user()->expenses()
-            ->orderBy('created_at', 'desc')
-            ->paginate(columns: ['id', 'description', 'amount', 'type', 'created_at']);
+            ->orderBy('expense_at', 'desc')
+            ->paginate(columns: ['id', 'description', 'amount', 'type', 'expense_at', 'created_at']);
         return view('livewire.expense.index', compact('expenses'));
     }
 

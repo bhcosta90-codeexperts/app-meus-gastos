@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('description');
             $table->unsignedTinyInteger('type');
             $table->unsignedBigInteger('amount');
+            $table->string('photo')->nullable();
+            $table->dateTime('expense_at');
             
             $table->timestamps();
             $table->softDeletes();

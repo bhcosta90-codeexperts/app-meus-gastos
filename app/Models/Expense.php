@@ -13,9 +13,15 @@ class Expense extends Model
 
     protected $fillable = [
         'user_id',
+        'expense_at',
         'description',
         'type',
         'amount',
+        'photo',
+    ];
+
+    protected $casts = [
+        'expense_at' => 'datetime',
     ];
 
     public function user()
