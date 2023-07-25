@@ -23,7 +23,7 @@ class Create extends Component
 
     public function save()
     {
-        $plan = $this->plan;
+        $plan = $this->validate();
 
         Plan::create($plan + [
             'reference' => 'PAGSEGURO-REFERENCE',
