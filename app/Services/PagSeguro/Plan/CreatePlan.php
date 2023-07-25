@@ -27,8 +27,6 @@ class CreatePlan
             ]
         );
 
-        \Log::info($response->json());
-
         return $response->json()['code'];
     }
 }
