@@ -44,6 +44,8 @@ class Create extends Component
             session()->flash('message', 'Registro criado com sucesso');
 
             $this->plan = [];
+            DB::commit();
+            
         } catch (Throwable $e) {
             DB::rollBack();
             throw $e;
