@@ -7,7 +7,12 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public array $plan = [];
+    public array $plan = [
+        'name' => null,
+        'description' => null,
+        'price' => null,
+        'slug' => null,
+    ];
 
     protected $rules = [
         'plan.name' => 'required',
