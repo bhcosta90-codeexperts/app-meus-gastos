@@ -21,7 +21,7 @@ class SubscriptionReaderService
 
     private static function subscriptionReader($urlCode)
     {
-        $response = Http::timeout(10)->withHeaders(
+        $response = Http::timeout(config('pagseguro.timeout'))->withHeaders(
             [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1'

@@ -21,7 +21,7 @@ class CreditCard extends Component
     public function mount()
     {
         $url = Credentials::getCredentials('/sessions/');
-        $response = Http::timeout(10)->post($url, []);
+        $response = Http::timeout(config('pagseguro.timeout'))->post($url, []);
         $responseXml = simplexml_load_string($response->body());
         $this->sessionId = (string) $responseXml->id;
     }
