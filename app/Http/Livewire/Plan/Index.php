@@ -7,6 +7,17 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public $showModal = false;
+
+    public function showModal()
+    {
+        $this->showModal = true;
+    }
+
+    public function closeModal() {
+        $this->showModal = false;
+    }
+    
     public function render()
     {
         $plans = Plan::orderBy('created_at', 'desc')
