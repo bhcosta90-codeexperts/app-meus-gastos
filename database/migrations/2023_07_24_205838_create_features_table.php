@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('type');
+            $table->json('rule')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
